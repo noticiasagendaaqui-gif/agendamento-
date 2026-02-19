@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de agendamento online para higienização de estofados. Agende seu serviço de forma rápida e prática.">
+    <title>LimpoEstofados - Agendamento Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- TELA INICIAL -->
+    <section id="tela-inicial" class="tela ativa">
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                        </svg>
+                    </div>
+                    <h1>LimpoEstofados</h1>
+                    <p class="tagline">Higienização Profissional</p>
+                </div>
+                
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon">✓</div>
+                        <span>Atendimento Rápido</span>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon">✓</div>
+                        <span>Profissionais Qualificados</span>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon">✓</div>
+                        <span>Produtos Eco-friendly</span>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon">✓</div>
+                        <span>Garantia de Satisfação</span>
+                    </div>
+                </div>
+
+                <div class="servicos-preview">
+                    <h3>Serviços Disponíveis</h3>
+                    <div class="servicos-grid">
+                        <div class="servico-item">
+                            <span class="servico-nome">Sofá 2 Lugares</span>
+                            <span class="servico-preco">R$ 120,00</span>
+                        </div>
+                        <div class="servico-item">
+                            <span class="servico-nome">Sofá 3 Lugares</span>
+                            <span class="servico-preco">R$ 150,00</span>
+                        </div>
+                        <div class="servico-item">
+                            <span class="servico-nome">Colchão Solteiro</span>
+                            <span class="servico-preco">R$ 80,00</span>
+                        </div>
+                        <div class="servico-item">
+                            <span class="servico-nome">Colchão Casal</span>
+                            <span class="servico-preco">R$ 120,00</span>
+                        </div>
+                        <div class="servico-item">
+                            <span class="servico-nome">Banco Automotivo</span>
+                            <span class="servico-preco">R$ 200,00</span>
+                        </div>
+                        <div class="servico-item">
+                            <span class="servico-nome">Poltrona</span>
+                            <span class="servico-preco">R$ 70,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primario btn-grande" onclick="navegarPara('tela-agendamento')">
+                    <span>Agendar Serviço</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+
+                <button class="btn-secundario btn-grande" onclick="navegarPara('tela-admin')">
+                    <span>Área Administrativa</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA DE AGENDAMENTO - ETAPA 1: SERVIÇO -->
+    <section id="tela-agendamento" class="tela">
+        <div class="container">
+            <div class="header-mobile">
+                <button class="btn-voltar" onclick="navegarPara('tela-inicial')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>Novo Agendamento</h2>
+                <div class="etapas-indicator">
+                    <span class="etapa ativa">1</span>
+                    <span class="etapa-linha"></span>
+                    <span class="etapa">2</span>
+                    <span class="etapa-linha"></span>
+                    <span class="etapa">3</span>
+                </div>
+            </div>
+
+            <div class="conteudo-agendamento">
+                <h3>Selecione o Serviço</h3>
+                <p class="subtitulo">Escolha o tipo de higienização que você precisa</p>
+
+                <div class="servicos-selecao-grid">
+                    <div class="servico-card" data-servico="sofa2" data-preco="120" onclick="selecionarServico(this)">
+                        <div class="servico-imagem">🛋️</div>
+                        <div class="servico-info">
+                            <h4>Sofá 2 Lugares</h4>
+                            <p class="servico-desc">Higienização completa do estofado</p>
+                            <span class="preco">R$ 120,00</span>
+                        </div>
+                        <div class="check-indicator">✓</div>
+                    </div>
+
+                    <div class="servico-card" data-servico="sofa3" data-preco="150" onclick="selecionarServico(this)">
+                        <div class="servico-imagem">🛋️</div>
+                        <div class="servico-info">
+                            <h4>Sofá 3 Lugares</h4>
+                            <p class="servico-desc">Higienização completa do estofado</p>
+                            <span class="preco">R$ 150,00</span>
+                        </div>
+                        <div class="check-indicator">✓</div>
+                    </div>
+
+                    <div class="servico-card" data-servico="colchao-solteiro" data-preco="80" onclick="selecionarServico(this)">
+                        <div class="servico-imagem">🛏️</div>
+                        <div class="servico-info">
+                            <h4>Colchão Solteiro</h4>
+                            <p class="servico-desc">Limpeza profunda e sanitização</p>
+                            <span class="preco">R$ 80,00</span>
+                        </div>
+                        <div class="check-indicator">✓</div>
+                    </div>
+
+                    <div class="servico-card" data-servico="colchao-casal" data-preco="120" onclick="selecionarServico(this)">
+                        <div class="servico-imagem">🛏️</div>
+                        <div class="servico-info">
+                            <h4>Colchão Casal</h4>
+                            <p class="servico-desc">Limpeza profunda e sanitização</p>
+                            <span class="preco">R$ 120,00</span>
+                        </div>
+                        <div class="check-indicator">✓</div>
+                    </div>
+
+                    <div class="servico-card" data-servico="banco-automotivo" data-preco="200" onclick="selecionarServico(this)">
+                        <div class="servico-imagem">🚗</div>
+                        <div class="servico-info">
+                            <h4>Banco Automotivo</h4>
+                            <p class="servico-desc">Higienização de bancos de carro</p>
+                            <span class="preco">R$ 200,00</span>
+                        </div>
+                        <div class="check-indicator">✓</div>
+                    </div>
+
+                    <div class="servico-card" data-servico="poltrona" data-preco="70" onclick="selecionarServico(this)">
+                        <div class="servico-imagem">🪑</div>
+                        <div class="servico-info">
+                            <h4>Poltrona</h4>
+                            <p class="servico-desc">Limpeza de poltronas e cadeiras</p>
+                            <span class="preco">R$ 70,00</span>
+                        </div>
+                        <div class="check-indicator">✓</div>
+                    </div>
+                </div>
+
+                <button class="btn-primario btn-grande" id="btn-continuar-servico" onclick="avancarEtapa(2)" disabled>
+                    Continuar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA DE AGENDAMENTO - ETAPA 2: DATA E HORÁRIO -->
+    <section id="tela-data-horario" class="tela">
+        <div class="container">
+            <div class="header-mobile">
+                <button class="btn-voltar" onclick="voltarEtapa(1)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>Novo Agendamento</h2>
+                <div class="etapas-indicator">
+                    <span class="etapa concluida">✓</span>
+                    <span class="etapa-linha ativa"></span>
+                    <span class="etapa ativa">2</span>
+                    <span class="etapa-linha"></span>
+                    <span class="etapa">3</span>
+                </div>
+            </div>
+
+            <div class="conteudo-agendamento">
+                <h3>Escolha Data e Horário</h3>
+                <p class="subtitulo">Selecione quando deseja receber o serviço</p>
+
+                <div class="form-group">
+                    <label for="data-agendamento">Data do Serviço</label>
+                    <input type="date" id="data-agendamento" class="input-grande" onchange="carregarHorariosDisponiveis()">
+                    <span class="input-ajuda">Horários disponíveis aparecerão abaixo</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Horário Disponível</label>
+                    <div class="horarios-grid" id="horarios-container">
+                        <p class="mensagem-info">Selecione uma data para ver os horários disponíveis</p>
+                    </div>
+                </div>
+
+                <button class="btn-primario btn-grande" id="btn-continuar-data" onclick="avancarEtapa(3)" disabled>
+                    Continuar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA DE AGENDAMENTO - ETAPA 3: DADOS PESSOAIS -->
+    <section id="tela-dados" class="tela">
+        <div class="container">
+            <div class="header-mobile">
+                <button class="btn-voltar" onclick="voltarEtapa(2)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>Novo Agendamento</h2>
+                <div class="etapas-indicator">
+                    <span class="etapa concluida">✓</span>
+                    <span class="etapa-linha concluida"></span>
+                    <span class="etapa concluida">✓</span>
+                    <span class="etapa-linha ativa"></span>
+                    <span class="etapa ativa">3</span>
+                </div>
+            </div>
+
+            <div class="conteudo-agendamento">
+                <h3>Seus Dados</h3>
+                <p class="subtitulo">Preencha suas informações para contato</p>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nome-cliente">Nome Completo *</label>
+                        <input type="text" id="nome-cliente" class="input-grande" placeholder="Digite seu nome completo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp-cliente">WhatsApp *</label>
+                        <input type="tel" id="whatsapp-cliente" class="input-grande" placeholder="(00) 00000-0000" maxlength="15" oninput="mascaraTelefone(this)">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="endereco-cliente">Endereço Completo *</label>
+                        <input type="text" id="endereco-cliente" class="input-grande" placeholder="Rua, número, bairro, cidade">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="observacoes-cliente">Observações (opcional)</label>
+                        <textarea id="observacoes-cliente" class="input-grande textarea" rows="3" placeholder="Informações adicionais sobre o serviço..."></textarea>
+                    </div>
+                </div>
+
+                <button class="btn-primario btn-grande" onclick="avancarParaConfirmacao()">
+                    Revisar Agendamento
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA DE CONFIRMAÇÃO -->
+    <section id="tela-confirmacao" class="tela">
+        <div class="container">
+            <div class="header-mobile">
+                <button class="btn-voltar" onclick="voltarEtapa(3)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>Confirmar Agendamento</h2>
+            </div>
+
+            <div class="conteudo-agendamento">
+                <div class="resumo-card">
+                    <h3>Resumo do Agendamento</h3>
+                    
+                    <div class="resumo-item">
+                        <span class="resumo-label">Serviço:</span>
+                        <span class="resumo-valor" id="resumo-servico">-</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="resumo-label">Valor:</span>
+                        <span class="resumo-valor preco-destaque" id="resumo-preco">-</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="resumo-label">Data:</span>
+                        <span class="resumo-valor" id="resumo-data">-</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="resumo-label">Horário:</span>
+                        <span class="resumo-valor" id="resumo-horario">-</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="resumo-label">Cliente:</span>
+                        <span class="resumo-valor" id="resumo-nome">-</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="resumo-label">WhatsApp:</span>
+                        <span class="resumo-valor" id="resumo-whatsapp">-</span>
+                    </div>
+                    <div class="resumo-item">
+                        <span class="resumo-label">Endereço:</span>
+                        <span class="resumo-valor" id="resumo-endereco">-</span>
+                    </div>
+                    <div class="resumo-item" id="resumo-obs-container" style="display: none;">
+                        <span class="resumo-label">Observações:</span>
+                        <span class="resumo-valor" id="resumo-observacoes">-</span>
+                    </div>
+                </div>
+
+                <div class="info-importante">
+                    <div class="info-icon">ℹ️</div>
+                    <p>Após confirmar, você será redirecionado para o WhatsApp para finalizar seu agendamento.</p>
+                </div>
+
+                <button class="btn-primario btn-grande btn-whatsapp" onclick="confirmarAgendamento()">
+                    <span>Confirmar e Enviar WhatsApp</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </button>
+
+                <button class="btn-secundario btn-grande" onclick="voltarEtapa(3)">
+                    Voltar e Editar
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA DE SUCESSO -->
+    <section id="tela-sucesso" class="tela">
+        <div class="container">
+            <div class="sucesso-content">
+                <div class="sucesso-icon">✓</div>
+                <h2>Agendamento Confirmado!</h2>
+                <p class="sucesso-mensagem">Seu agendamento foi registrado com sucesso. Em breve entraremos em contato pelo WhatsApp para confirmar.</p>
+                
+                <div class="sucesso-detalhes" id="sucesso-detalhes">
+                    <!-- Preenchido via JS -->
+                </div>
+
+                <button class="btn-primario btn-grande" onclick="navegarPara('tela-inicial')">
+                    Fazer Novo Agendamento
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA ADMINISTRATIVA - LOGIN -->
+    <section id="tela-admin-login" class="tela">
+        <div class="container">
+            <div class="header-mobile">
+                <button class="btn-voltar" onclick="navegarPara('tela-inicial')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>Área Administrativa</h2>
+            </div>
+
+            <div class="login-content">
+                <div class="login-icon">🔒</div>
+                <h3>Acesso Restrito</h3>
+                <p class="subtitulo">Digite a senha para acessar o painel administrativo</p>
+
+                <div class="form-group">
+                    <label for="senha-admin">Senha</label>
+                    <input type="password" id="senha-admin" class="input-grande" placeholder="Digite a senha">
+                </div>
+
+                <button class="btn-primario btn-grande" onclick="verificarSenhaAdmin()">
+                    Acessar Painel
+                </button>
+
+                <p class="senha-dica">Senha padrão: admin123</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TELA ADMINISTRATIVA - PAINEL -->
+    <section id="tela-admin" class="tela">
+        <div class="container">
+            <div class="header-mobile">
+                <button class="btn-voltar" onclick="navegarPara('tela-inicial')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <h2>Painel Administrativo</h2>
+            </div>
+
+            <div class="admin-content">
+                <div class="estatisticas-grid">
+                    <div class="estatistica-card">
+                        <span class="estatistica-valor" id="total-agendamentos">0</span>
+                        <span class="estatistica-label">Total Agendamentos</span>
+                    </div>
+                    <div class="estatistica-card">
+                        <span class="estatistica-valor" id="agendamentos-pendentes">0</span>
+                        <span class="estatistica-label">Pendentes</span>
+                    </div>
+                    <div class="estatistica-card">
+                        <span class="estatistica-valor" id="agendamentos-concluidos">0</span>
+                        <span class="estatistica-label">Concluídos</span>
+                    </div>
+                </div>
+
+                <div class="filtros-admin">
+                    <button class="filtro-btn ativa" onclick="filtrarAgendamentos('todos')">Todos</button>
+                    <button class="filtro-btn" onclick="filtrarAgendamentos('pendente')">Pendentes</button>
+                    <button class="filtro-btn" onclick="filtrarAgendamentos('concluido')">Concluídos</button>
+                </div>
+
+                <div class="lista-agendamentos" id="lista-agendamentos">
+                    <!-- Preenchido via JS -->
+                </div>
+
+                <div class="acoes-admin">
+                    <button class="btn-perigo btn-grande" onclick="limparTodosAgendamentos()">
+                        Limpar Todos os Agendamentos
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE DETALHES DO AGENDAMENTO -->
+    <div id="modal-detalhes" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalhes do Agendamento</h3>
+                <button class="btn-fechar" onclick="fecharModal()">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Preenchido via JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secundario" onclick="fecharModal()">Fechar</button>
+                <button class="btn-primario" id="btn-marcar-concluido" onclick="marcarConcluido()">Marcar como Concluído</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- OVERLAY DE CARREGAMENTO -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Processando...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
